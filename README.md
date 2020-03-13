@@ -23,11 +23,11 @@ Download the following files from the assests in [releases](https://github.com/I
 - cloudctl_cert_chain0.pub
 - cloudctl_cert_chain1.pub
 
-Verify that the certificate is owned by IBM:
+#### Verify that the certificate is owned by IBM:
 
 `openssl x509 -inform pem -in cloudctl_cert.pub -noout -text`
 
-Verify that the certificate is still active:
+#### Verify that the certificate is still active:
 
 `openssl ocsp -no_nonce -issuer cloudctl_cert_chain0.pub -cert cloudctl_cert.pub -VAfile cloudctl_cert_chain0.pub -text -url http://ocsp.digicert.com -respout ocsptest`
 
@@ -35,7 +35,7 @@ Should see a message that contains
 
 `Response verify OK`
 
-Verify that the intermediate certificate is still active:
+#### Verify that the intermediate certificate is still active:
 
 `openssl ocsp -no_nonce -issuer cloudctl_cert_chain1.pub -cert cloudctl_cert_chain0.pub -VAfile cloudctl_cert_chain1.pub -text -url http://ocsp.digicert.com -respout ocsptest`
 
@@ -49,7 +49,7 @@ Should see a message that contains
 Download the following file from the assests in [releases](https://github.com/IBM/cloud-pak-cli/releases):
 - cloudctl_key.pub
 
-Verify the binary:
+#### Verify the binary:
 
 `openssl dgst -sha256 -verify cloudctl_key.pub -signature <cloudctl_signature_file> <binary_file>`
 
