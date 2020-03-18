@@ -42,7 +42,7 @@ Should see a message that contains
 
 `Response verify OK`
 
-## Optionallay Validate Each Certificate
+### Optionallay Validate Each Certificate
 
 #### Verify that the certificate is still active:
 
