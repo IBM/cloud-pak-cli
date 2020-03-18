@@ -16,20 +16,20 @@ There should be two files after extraction:
 The signature file is used for verification purposes
 
 
-## Check Certificate Validity
+## Check Certificate/Key Validity
 
 Download the following files from the assests in [releases](https://github.com/IBM/cloud-pak-cli/releases):
-- cloudctl_cert.pub
-- cloudctl_cert_chain0.pub
-- cloudctl_cert_chain1.pub
+- cloudctl.pem
+- cloudctl-chain0.pem
+- cloudctl-chain1.pem
 
-#### Verify that the certificate is owned by IBM:
+#### Verify that the certificate/key is owned by IBM:
 
-`openssl x509 -inform pem -in cloudctl_cert.pub -noout -text`
+`openssl x509 -inform pem -in cloudctl.pem -noout -text`
 
 #### Verify that the certificate is still active:
 
-`openssl ocsp -no_nonce -issuer cloudctl_cert_chain0.pub -cert cloudctl_cert.pub -VAfile cloudctl_cert_chain0.pub -text -url http://ocsp.digicert.com -respout ocsptest`
+`openssl ocsp -no_nonce -issuer cloudctl-chain0.pem -cert cloudctl.pem -VAfile cloudctl-chain0.pem -text -url http://ocsp.digicert.com -respout ocsptest`
 
 Should see a message that contains 
 
@@ -37,7 +37,7 @@ Should see a message that contains
 
 #### Verify that the intermediate certificate is still active:
 
-`openssl ocsp -no_nonce -issuer cloudctl_cert_chain1.pub -cert cloudctl_cert_chain0.pub -VAfile cloudctl_cert_chain1.pub -text -url http://ocsp.digicert.com -respout ocsptest`
+`openssl ocsp -no_nonce -issuer cloudctl-chain1.pem -cert cloudctl-chain0.pem -VAfile cloudctl-chain1.pem -text -url http://ocsp.digicert.com -respout ocsptest`
 
 Should see a message that contains 
 
@@ -46,16 +46,17 @@ Should see a message that contains
 
 ## Verify Binary
 
-Download the following file from the assests in [releases](https://github.com/IBM/cloud-pak-cli/releases):
-- cloudctl_key.pub
+After completing verification of the certificate, extract public key:
 
-#### Verify the binary:
+`openssl x509 -pubkey -noout -in cloudctl.pem > public.key`
 
-`openssl dgst -sha256 -verify cloudctl_key.pub -signature <cloudctl_signature_file> <binary_file>`
+The public key is used to verify the binary:
+
+`openssl dgst -sha256 -verify public.key -signature <cloudctl_signature_file> <binary_file>`
 
 e.g.
 
-`openssl dgst -sha256 -verify cloudctl_key.pub -signature cloudctl-darwin-amd64.sig cloudctl-darwin-amd64`
+`openssl dgst -sha256 -verify public.key -signature cloudctl-darwin-amd64.sig cloudctl-darwin-amd64`
 
 Should see a message that contains 
 
