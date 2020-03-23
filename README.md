@@ -73,7 +73,7 @@ openssl dgst -sha256 -verify public.key -signature <cloudctl_signature_file> <ta
 e.g.
 
 ```
-openssl dgst -sha256 -verify public.key -signature cloudctl-darwin-amd64.sig cloudctl-darwin-amd64.tar.gz
+openssl dgst -sha256 -verify public.key -signature cloudctl-darwin-amd64.tar.gz.sig cloudctl-darwin-amd64.tar.gz
 ```
 
 Should see a message that contains 
