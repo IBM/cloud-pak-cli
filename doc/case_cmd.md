@@ -14,7 +14,7 @@ cloudctl case save --case <CASE_PATH_OR_URL> --outputdir <OUTPUT_DIR>
 OPTIONS:
    --case value, -c value       The local path or URL containing the CASE file to parse
    --outputdir value, -o value  The output directory to which the CASE resources will be placed. The output directory will be created if it does not exist
-   --tolerance value, -t value  tolerance levels for validating the CASE 
+   --tolerance value, -t value  The tolerance level for validating the CASE 
                                  0 - maximum validation 
                                  1 - reduced validation 
                                  (default: 0)
@@ -47,7 +47,7 @@ OPTIONS:
    --instance value, -i value   The name of the instance of the target application (release)
    --inventory value, -e value  The name of the inventory item launched
    --namespace value, -n value  The name of the target namespace
-   --tolerance value, -t value  tolerance levels for validating the CASE 
+   --tolerance value, -t value  The tolerance level for validating the CASE 
                                  0 - maximum validation 
                                  1 - reduced validation 
                                  (default: 0)
