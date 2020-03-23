@@ -2,34 +2,44 @@
 Cloudctl is a command line tool to manage Container Application Software for Enterprises (CASE)
 
 
-## Download and Install
+## Download
 
-1. Download either the zip or tar archives from the assets in [releases](https://github.com/IBM/cloud-pak-cli/releases)
-2. Extract the archive
-    - `unzip <archive-name>`
-    - `tar -xzf <archive-name>`
+1. Download the tar archive for your OS from the assets in [releases](https://github.com/IBM/cloud-pak-cli/releases)
+2. Download the corresponding `.sig` file for verification purposes
 
-There should be two files after extraction:
-- cloudctl binary (e.g. cloudctl-darwin-amd64)
-- cloudctl signature (e.g. cloudctl-darwin-amd64.sig)
+## Check Certificate/Key Validity
 
-The signature file is used for verification purposes
+Clone this repository to get the following PEM files for verification purposes:
+- cloudctl.pub
+- cloudctl-chain0.pub
+- cloudctl-chain1.pub
 
+#### Verify that the certificate/key is owned by IBM:
 
-## Check Certificate Validity
+```
+openssl x509 -inform pub -in cloudctl.pub -noout -text
+```
 
-Download the following files from the assests in [releases](https://github.com/IBM/cloud-pak-cli/releases):
-- cloudctl_cert.pub
-- cloudctl_cert_chain0.pub
-- cloudctl_cert_chain1.pub
+#### Verify authenticity of certificate/key:
 
-#### Verify that the certificate is owned by IBM:
+```
+cat cloudctl-chain0.pub > chain.pub
+cat cloudctl-chain1.pub >> chain.pub
 
-`openssl x509 -inform pem -in cloudctl_cert.pub -noout -text`
+openssl ocsp -no_nonce -issuer chain.pub -cert cloudctl.pub -VAfile chain.pub -text -url http://ocsp.digicert.com -respout ocsptest
+```
+
+Should see a message that contains 
+
+`Response verify OK`
+
+### Optionallay Validate Each Certificate Individually
 
 #### Verify that the certificate is still active:
 
-`openssl ocsp -no_nonce -issuer cloudctl_cert_chain0.pub -cert cloudctl_cert.pub -VAfile cloudctl_cert_chain0.pub -text -url http://ocsp.digicert.com -respout ocsptest`
+```
+openssl ocsp -no_nonce -issuer cloudctl-chain0.pub -cert cloudctl.pub -VAfile cloudctl-chain0.pub -text -url http://ocsp.digicert.com -respout ocsptest
+```
 
 Should see a message that contains 
 
@@ -37,68 +47,43 @@ Should see a message that contains
 
 #### Verify that the intermediate certificate is still active:
 
-`openssl ocsp -no_nonce -issuer cloudctl_cert_chain1.pub -cert cloudctl_cert_chain0.pub -VAfile cloudctl_cert_chain1.pub -text -url http://ocsp.digicert.com -respout ocsptest`
+```
+openssl ocsp -no_nonce -issuer cloudctl-chain1.pub -cert cloudctl-chain0.pub -VAfile cloudctl-chain1.pub -text -url http://ocsp.digicert.com -respout ocsptest
+```
 
 Should see a message that contains 
 
 `Response verify OK`
 
 
-## Verify Binary
+## Verify Archive
 
-Download the following file from the assests in [releases](https://github.com/IBM/cloud-pak-cli/releases):
-- cloudctl_key.pub
+After completing verification of the certificate, extract public key:
 
-#### Verify the binary:
+```
+openssl x509 -pubkey -noout -in cloudctl.pub > public.key
+```
 
-`openssl dgst -sha256 -verify cloudctl_key.pub -signature <cloudctl_signature_file> <binary_file>`
+The public key is used to verify the tar archive:
+
+```
+openssl dgst -sha256 -verify public.key -signature <cloudctl_signature_file> <tar.gz_file>
+```
 
 e.g.
 
-`openssl dgst -sha256 -verify cloudctl_key.pub -signature cloudctl-darwin-amd64.sig cloudctl-darwin-amd64`
+```
+openssl dgst -sha256 -verify public.key -signature cloudctl-darwin-amd64.sig cloudctl-darwin-amd64.tar.gz
+```
 
 Should see a message that contains 
 
 `Verified OK`
 
-## cloudctl case command reference
+## Install
 
-Learn about the `cloudctl case` commands that you can run to manage you CASEs.
+Extract the archive
 
-### cloudctl case save
+    - `tar -xzf <archive-name>`
 
-Save the contents of your CASE locally.
-
-- Example
-```
-cloudctl case save --case <CASE_PATH_OR_URL> --outputdir <OUTPUT_DIR>
-
-OPTIONS:
-   --case value, -c value       The local path or URL containing the CASE file to parse
-   --outputdir value, -o value  The output directory to which the CASE resources will be placed. The output directory will be created if it does not exist
-   --tolerance value, -t value  tolerance levels for validating the CASE 
-                                 0 - maximum validation 
-                                 1 - reduced validation 
-                                 (default: 0)
-```
-
-### cloudctl case launch
-
-Executes the specified CASE launcher script
-
-- Example
-```
-cloudctl case launch --case <CASE-PATH> [additional parameters]
-
-OPTIONS:
-   --action value, -a value     The name of the action item launched
-   --args value, -r value       Other arguments. Refer to documentation for specifics.
-   --case value, -c value       The root directory to the extracted CASE
-   --instance value, -i value   The name of the instance of the target application (release)
-   --inventory value, -e value  The name of the inventory item launched
-   --namespace value, -n value  The name of the target namespace
-   --tolerance value, -t value  tolerance levels for validating the CASE 
-                                 0 - maximum validation 
-                                 1 - reduced validation 
-                                 (default: 0)
-```
+There should be a binary executable after extraction
