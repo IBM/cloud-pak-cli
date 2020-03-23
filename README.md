@@ -4,15 +4,30 @@ Cloudctl is a command line tool to manage Container Application Software for Ent
 
 ## Download
 
-1. Download the tar archive for your OS from the assets in [releases](https://github.com/IBM/cloud-pak-cli/releases)
+1. Download the gzipped tar archive for your OS from the assets in [releases](https://github.com/IBM/cloud-pak-cli/releases)
 2. Download the corresponding `.sig` file for verification purposes
+
+Example using `curl`:
+```
+curl https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0-alpha.1/cloudctl-darwin-amd64.tar.gz -o cloudctl-darwin-amd64.tar.gz
+curl https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0-alpha.1/cloudctl-darwin-amd64.tar.gz.sig -o cloudctl-darwin-amd64.tar.gz.sig
+```
+
+Example using `wget`:
+```
+wget https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0-alpha.1/cloudctl-darwin-amd64.tar.gz
+wget https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0-alpha.1/cloudctl-darwin-amd64.tar.gz.sig
+```
+
 
 ## Check Certificate/Key Validity
 
-Clone this repository to get the following PEM files for verification purposes:
-- cloudctl.pub
-- cloudctl-chain0.pub
-- cloudctl-chain1.pub
+Retrieve the latest public keys (example with wget):
+```
+wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/cloudctl.pub
+wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/cloudctl-chain0.pub
+wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/cloudctl-chain1.pub
+```
 
 #### Verify that the certificate/key is owned by IBM:
 
@@ -29,7 +44,7 @@ cat cloudctl-chain1.pub >> chain.pub
 openssl ocsp -no_nonce -issuer chain.pub -cert cloudctl.pub -VAfile chain.pub -text -url http://ocsp.digicert.com -respout ocsptest
 ```
 
-Should see a message that contains 
+Should see a message that contains:
 
 `Response verify OK`
 
@@ -41,7 +56,7 @@ Should see a message that contains
 openssl ocsp -no_nonce -issuer cloudctl-chain0.pub -cert cloudctl.pub -VAfile cloudctl-chain0.pub -text -url http://ocsp.digicert.com -respout ocsptest
 ```
 
-Should see a message that contains 
+Should see a message that contains:
 
 `Response verify OK`
 
@@ -51,7 +66,7 @@ Should see a message that contains
 openssl ocsp -no_nonce -issuer cloudctl-chain1.pub -cert cloudctl-chain0.pub -VAfile cloudctl-chain1.pub -text -url http://ocsp.digicert.com -respout ocsptest
 ```
 
-Should see a message that contains 
+Should see a message that contains:
 
 `Response verify OK`
 
@@ -73,17 +88,16 @@ openssl dgst -sha256 -verify public.key -signature <cloudctl_signature_file> <ta
 e.g.
 
 ```
-openssl dgst -sha256 -verify public.key -signature cloudctl-darwin-amd64.sig cloudctl-darwin-amd64.tar.gz
+openssl dgst -sha256 -verify public.key -signature cloudctl-darwin-amd64.tar.gz.sig cloudctl-darwin-amd64.tar.gz
 ```
 
-Should see a message that contains 
+Should see a message that contains:
 
 `Verified OK`
 
 ## Install
 
-Extract the archive
-
-    - `tar -xzf <archive-name>`
+Extract the archive:
+  - `tar -xzf <archive-name>`
 
 There should be a binary executable after extraction
