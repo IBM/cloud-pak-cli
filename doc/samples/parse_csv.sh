@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Copyright IBM Corp. 2020
 #
 # parse_csv.sh takes an image csv or directory containing image csvs and
 # uses either oc mirror or skopeo copy to mirror the images from the remote
