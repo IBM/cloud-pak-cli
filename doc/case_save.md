@@ -29,7 +29,7 @@ This example shows the output of a `cloudctl case save` command for a CASE with 
 ├── case1
 │   ├── chart1
 │   ├── case2
-|   │   ├──chart2
+│   │   ├──chart2
 ```
 
 The output includes the two Helm charts in tgz format in the charts directory, two CASE tgzs for the two CASEs in the root directory, and csv files containing information about which helm charts and container images are associated with each of the CASEs.
