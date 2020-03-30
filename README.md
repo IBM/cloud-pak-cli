@@ -1,5 +1,5 @@
 # Overview
-Cloudctl is a command line tool to manage Container Application Software for Enterprises (CASE)
+Cloudctl is a command line tool to manage Container Application Software for Enterprises (CASEs) 
 
 
 ## Download
@@ -48,7 +48,7 @@ Should see a message that contains:
 
 `Response verify OK`
 
-### Optionallay Validate Each Certificate Individually
+### Optionally Validate Each Certificate Individually
 
 #### Verify that the certificate is still active:
 
