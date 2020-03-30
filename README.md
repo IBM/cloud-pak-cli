@@ -9,14 +9,14 @@ Cloudctl is a command line tool to manage Container Application Software for Ent
 
 Example using `curl`:
 ```
-curl https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0-alpha.1/cloudctl-darwin-amd64.tar.gz -o cloudctl-darwin-amd64.tar.gz
-curl https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0-alpha.1/cloudctl-darwin-amd64.tar.gz.sig -o cloudctl-darwin-amd64.tar.gz.sig
+curl -L https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0/cloudctl-darwin-amd64.tar.gz -o cloudctl-darwin-amd64.tar.gz
+curl -L https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0/cloudctl-darwin-amd64.tar.gz.sig -o cloudctl-darwin-amd64.tar.gz.sig
 ```
 
 Example using `wget`:
 ```
-wget https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0-alpha.1/cloudctl-darwin-amd64.tar.gz
-wget https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0-alpha.1/cloudctl-darwin-amd64.tar.gz.sig
+wget https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0/cloudctl-darwin-amd64.tar.gz
+wget https://github.com/IBM/cloud-pak-cli/releases/download/v3.3.0/cloudctl-darwin-amd64.tar.gz.sig
 ```
 
 
