@@ -98,3 +98,15 @@ To this end, there is a [sample CSV parsing script](samples/parse_csv.sh) found 
 ### Exit codes
 
 Phase one of this project returns only two possible return codes: 0 for success and 1 for failure. We expect to support additional exit codes in the future and will outline them here when they are available.
+
+### CASE validation
+
+Each CASE contains two files for validating the authenticity of the CASE: digests.yaml and signature.yaml. The digests.yaml contains a shasum for the CASE as well as any other resources that are referenced by the CASE. These resources include files, container images, Helm charts, and other CASEs. The signature.yaml contains an encrypted shasum of the contents of the files in the CASE. Each file represents a point-in-time reference for the specific CASE.
+
+The digests.yaml is verified during `cloudctl case save` and the signature.yaml is verified during `cloudctl case launch`.
+
+More information on digests.yaml and signature.yaml can be found in the [CASE specification documentation](https://github.com/ibm/case).
+
+#### A note on floating tags
+
+As stated previously, digests.yaml and signature.yaml represent a point-in-time reference for a CASE. If a CASE references a mutable image tag, such as `latest` and the image is updated between when the CASE is published and `cloudctl case save` is run, then digest validation will fail. If digest validation is failing for this reason, and you are confident in the pedigree of the CASE, then this validation can be bypassed by setting the `-t | --tolerance` flag to 1.
