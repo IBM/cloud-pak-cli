@@ -101,3 +101,16 @@ Extract the archive:
   - `tar -xzf <archive-name>`
 
 There should be a binary executable after extraction
+
+### For MacOS users
+
+MacOS users might be prompted that `cloudctl` is not trusted. There are two ways to get around this:
+
+- Open the cloudctl file in Finder using the Open command, and click the right button to whitelist this application.
+
+or 
+
+- Enable developer-mode for your terminal window, which whitelists everything
+  - spctl developer-mode enable-terminal
+  - go to system prefs -> security & privacy -> Privacy Tab -> Developer Tools -> Terminal : Enable
+  - restart all terminals
