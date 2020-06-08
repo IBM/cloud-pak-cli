@@ -7,13 +7,13 @@ Cloudctl is a command line tool to manage Container Application Software for Ent
 1. Download the gzipped tar archive for your OS from the assets in [releases](https://github.com/IBM/cloud-pak-cli/releases)
 2. Download the corresponding `.sig` file for verification purposes
 
-MacOS example using `curl`:
+macOS example using `curl`:
 ```
 curl -L https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-darwin-amd64.tar.gz -o cloudctl-darwin-amd64.tar.gz
 curl -L https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-darwin-amd64.tar.gz.sig -o cloudctl-darwin-amd64.tar.gz.sig
 ```
 
-MacOS example using `wget`:
+macOS example using `wget`:
 ```
 wget https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-darwin-amd64.tar.gz
 wget https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-darwin-amd64.tar.gz.sig
