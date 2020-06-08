@@ -101,3 +101,19 @@ Extract the archive:
   - `tar -xzf <archive-name>`
 
 There should be a binary executable after extraction
+
+### For macOS Catalina users
+
+Users on macOS Catalina might be prompted that `cloudctl-darwin-amd64` is not a trusted application. There are two ways to get around this:
+
+- Open Finder, control-click  the application `cloudctl-darwin-amd64`, choose **Open** from the menu, and then click **Open** in the dialog that appears. Enter your admin name and password to open the app if promoted.
+
+- Enable developer-mode for your terminal window, which will whitelist everything:
+  -  Open Terminal, and enter:
+       ```console
+       ❯ spctl developer-mode enable-terminal 
+      ```
+  - Go to System Preferences -> Security & Privacy -> Privacy Tab -> Developer Tools -> Terminal : Enable
+  - Restart all terminals
+
+_See https://support.apple.com/en-ca/HT202491 for more information_
