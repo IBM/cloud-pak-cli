@@ -21,8 +21,8 @@ wget https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-darw
 
 Linux x86-architecture example using `curl`:
 ```
-curl -L https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-linux-amd64.tar.gz -o cloudctl-darwin-amd64.tar.gz
-curl -L https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-linux-amd64.tar.gz.sig -o cloudctl-darwin-amd64.tar.gz.sig
+curl -L https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-linux-amd64.tar.gz -o cloudctl-linux-amd64.tar.gz
+curl -L https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-linux-amd64.tar.gz.sig -o cloudctl-linux-amd64.tar.gz.sig
 ```
 
 Linux x86-architecture example using `wget`:
