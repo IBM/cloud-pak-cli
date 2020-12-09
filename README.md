@@ -129,4 +129,3 @@ Users on macOS Catalina might be prompted that `cloudctl-darwin-amd64` is not a 
   - Restart all terminals
 
 _See https://support.apple.com/en-ca/HT202491 for more information_
-
