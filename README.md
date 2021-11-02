@@ -129,3 +129,7 @@ Users on macOS Catalina might be prompted that `cloudctl-darwin-amd64` is not a 
   - Restart all terminals
 
 _See https://support.apple.com/en-ca/HT202491 for more information_
+
+## Support
+
+To report an issue or get help please visit https://www.ibm.com/docs/en/cpfs?topic=support-opening-case
