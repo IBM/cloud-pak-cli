@@ -44,7 +44,7 @@ wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/cloudctl-chain1.
 #### Verify that the certificate/key is owned by IBM:
 
 ```
-openssl x509 -inform pub -in cloudctl.pub -noout -text
+openssl x509 -inform pem -in cloudctl.pub -noout -text
 ```
 
 #### Verify authenticity of certificate/key:
