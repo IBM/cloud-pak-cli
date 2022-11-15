@@ -1,3 +1,4 @@
+**DEPRECATION NOTICE:**  The `cloudctl case` command is deprecated in favor of [ibm-pak plugin](https://github.com/IBM/ibm-pak-plugin). Support for them will be removed in a future release. More information is available at https://ibm.biz/cloudctl-case-deprecate.
 # cloudctl case save example
 
 `cloudctl case save` saves the contents of your CASE locally. This includes the CASE itself and any dependent CASEs and Helm charts. Container images referenced by your CASE will be compiled in a comma separated values (CSV) file that can be used to mirror your images into a local image repository.
