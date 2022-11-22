@@ -1,3 +1,4 @@
+**DEPRECATION NOTICE:**  The `cloudctl case` command is deprecated in favor of [ibm-pak plugin](https://github.com/IBM/ibm-pak-plugin). Support for them will be removed in a future release. More information is available at https://ibm.biz/cloudctl-case-deprecate.
 # cloudctl case launch example
 
 `cloudctl case launch` executes an action defined in a CASE. As part of this process, it validates the prerequisites for the action and the integrity of the CASE prior to executing the script. A CASE can contain zero or more launch scripts.

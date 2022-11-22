@@ -1,3 +1,4 @@
+**DEPRECATION NOTICE:**  The `cloudctl case` command is deprecated in favor of [ibm-pak plugin](https://github.com/IBM/ibm-pak-plugin). Support for them will be removed in a future release. More information is available at https://ibm.biz/cloudctl-case-deprecate.
 ## cloudctl case
 
 Learn about the `cloudctl case` commands that you can run to manage your CASEs.
