@@ -18,9 +18,9 @@
 
 Retrieve the latest public keys (example with wget):
 ```
-wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/certificates/cloudctl.pem.cer -o cloudctl.pem.cer
-wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/certificates/cloudctl.pem.chain -o cloudctl.pem.chain
-wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/certificates/cloudctl.pem.pub.key -o cloudctl.pem.pub.key
+wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/certificates/cloudctl.pem.cer
+wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/certificates/cloudctl.pem.chain
+wget https://raw.githubusercontent.com/IBM/cloud-pak-cli/master/certificates/cloudctl.pem.pub.key
 ```
 
 # Check Certificate/Key Validity and Archives
